@@ -293,15 +293,15 @@ footer{
     <span class="stance-tag against">Against</span>
     <h2>the Proposition</h2>
   </div>
-
+ 
   <p class="caption">
-    States where more women live in clinic deserts consistently report lower abortion rates. A clear downward trend suggests that restricting access does reduce the number of abortions that occur. Source: Guttmacher Institute, 2020.
+    States where more women live in clinic deserts consistently report lower abortion rates. A clear downward trend — with blue high-access states clustered in the upper left and red low-access states in the lower right — suggests that restricting access does reduce the number of abortions that occur. Source: Guttmacher Institute, 2020.
   </p>
-
+ 
   <div class="chart-frame">
-    <img src="images/clinics_reduce_abortion_scatterplot_dark.jpeg">
+    <img src="clinics_reduce_abortion_scatterplot_dark.jpeg" alt="Dark-themed scatter plot titled 'Less Access to Clinics Reduce Abortion Rate.' X-axis shows percentage of women aged 15–44 in a county without a clinic (0–100%). Y-axis shows abortions per 1,000 women aged 15–44 in 2020. Blue dots (high access, <30% in desert) cluster in upper left with higher abortion rates. Red-orange dots (low access, ≥60% in desert) cluster in lower right with lower rates. A dashed red OLS trendline descends from left to right, annotated with 'slope = −0.12 (each +10% desert = −1.2 fewer abortions per 1,000).'">
   </div>
-
+ 
   <p class="decisions-label">Design Decisions and Rationale</p>
   <p class="score-key">Score: −2 = fully deceptive &nbsp;·&nbsp; 0 = neutral &nbsp;·&nbsp; +2 = fully earnest</p>
   <ul class="decisions-list">
@@ -309,29 +309,28 @@ footer{
       <span class="score-badge neg">−2</span>
       <div class="decision-content">
         <p class="decision-title">Omission of out-of-state travel data</p>
-        <p class="decision-body">Both charts use only in-state abortion occurrence rates, completely excluding cross-state travel. This is our most deceptive choice: a lower in-state rate looks like fewer abortions overall, when in reality many abortions simply occur in neighboring states. We were fully aware of this omission — it is precisely the counter-argument the FOR side makes. We scored this −2 because it directly suppresses the most important alternative explanation for the pattern shown.</p>
+        <p class="decision-body">The scatter plot uses only in-state abortion occurrence rates, completely excluding cross-state travel. This is our most deceptive choice: a lower in-state rate looks like fewer abortions overall, when in reality many abortions simply occur in neighboring states. We were fully aware of this omission — it is precisely the counter-argument the FOR visualization makes. We scored this −2 because it directly suppresses the most important alternative explanation for the downward pattern shown. States like Missouri, which appear to have low abortion rates by this metric, actually have 99% of their residents traveling out of state for care.</p>
       </div>
     </li>
     <li>
       <span class="score-badge neg">−1.5</span>
       <div class="decision-content">
         <p class="decision-title">Trendline and slope annotation imply causation</p>
-        <p class="decision-body">The OLS trendline is mathematically valid, but annotating it with "slope = −0.12 (each +10% desert = −1.2 fewer abortions per 1,000)" implies a causal mechanism. The precise-sounding language makes the relationship feel like a policy lever when it is only a correlation that may be driven by cultural, demographic, or political confounds. We deliberately used specific numerical language to lend false precision and authority to the claim.</p>
+        <p class="decision-body">The OLS trendline is mathematically valid, but annotating it with "slope = −0.12 (each +10% desert = −1.2 fewer abortions per 1,000)" implies a causal mechanism. The precise-sounding numerical language makes the relationship feel like a reliable policy lever when it is only a correlation that may be driven by cultural, demographic, religious, or political confounds. We deliberately used specific figures to lend false precision and authority — the number reads as a policy outcome when it is merely a statistical summary of an observational dataset riddled with lurking variables.</p>
       </div>
     </li>
     <li>
       <span class="score-badge neg">−1</span>
       <div class="decision-content">
         <p class="decision-title">Dark dashboard aesthetic signals scientific rigor</p>
-        <p class="decision-body">Styling the charts with a dark background, white gridlines, and a monochromatic color scheme mimics the aesthetic of authoritative data journalism outlets (Bloomberg, FiveThirtyEight). This visual language primes readers to trust the analysis as objective and rigorous. The aesthetic credibility is borrowed, not earned — the underlying argument omits critical data. We considered a plain white chart style but found the dark theme made readers more likely to accept the conclusion without scrutiny.</p>
+        <p class="decision-body">Styling the chart with a near-black background, white gridlines, monochromatic dot colors, and a courier-style monospaced font for annotations mimics the aesthetic of authoritative data journalism (Bloomberg, FiveThirtyEight). This visual language primes readers to trust the analysis as objective and rigorous. The aesthetic credibility is borrowed, not earned — the underlying argument omits critical data about cross-state travel. A plain white chart style would have presented the same correlation far less authoritatively, so we chose the dark theme specifically because it raised the perceived trustworthiness of a misleading framing.</p>
       </div>
     </li>
     <li>
       <span class="score-badge neg">−0.5</span>
       <div class="decision-content">
-        <p class="decision-title">Grouping into tiers smooths over within-group variance</p>
-        <p class="decision-body">The bar chart collapses states into three access tiers and shows their averages (16.4, 11.2, 7.7), hiding the considerable spread within each group. Several high-desert states have abortion rates comparable to high-access states, which the scatter plot partially reveals but the bar chart conceals. Averaging suppresses contradictory cases, making the downward pattern look cleaner and more inevitable than it actually is.</p>
-      </div>
+        <p class="decision-title">Three-color dot encoding reinforces the narrative arc</p>
+        <p class="decision-body">Coloring points by access tier (blue for high access, gray for moderate, red-orange for low) visually separates the scatter into three distinct clusters that track the trendline's descent from upper-left to lower-right. This makes the relationship look structurally clean and group-driven rather than noisy and overlapping. In reality, there is substantial overlap in abortion rates across tiers — several low-access (red) states have rates comparable to high-access (blue) ones. The color encoding draws attention to the between-group pattern while visually downplaying the within-group variance that would complicate the story.</p>
     </li>
   </ul>
 
