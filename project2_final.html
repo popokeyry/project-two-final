@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Project 2 — Persuasive or Deceptive Visualization?</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf8;
+  --surface:#ffffff;
+  --ink:#111010;
+  --muted:#6b6560;
+  --rule:#e0dbd2;
+  --for:#b5401a;
+  --against:#1e4f82;
+  --accent:#c8973a;
+  --card-bg:#f4f1ec;
+}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* ── HEADER ── */
+header{
+  max-width:760px;
+  margin:0 auto;
+  padding:3.5rem 2rem 0;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:1.5rem;
+}
+.course-label{
+  font-size:0.65rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.5rem;
+}
+header h1{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:400;
+  line-height:1.15;
+  margin-bottom:0.5rem;
+  letter-spacing:-0.01em;
+}
+header h1 em{
+  font-style:italic;
+  color:var(--muted);
+}
+.byline{
+  font-size:0.8rem;
+  color:var(--muted);
+  margin-top:0.8rem;
+}
+.byline span{color:var(--ink);font-weight:500}
+
+/* ── MAIN CONTENT ── */
+main{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 2rem 4rem;
+}
+
+/* ── PROPOSITION ── */
+.proposition{
+  margin:2.5rem 0 2rem;
+  padding:1.2rem 1.5rem;
+  border-left:3px solid var(--accent);
+  background:var(--card-bg);
+}
+.proposition .label{
+  font-size:0.62rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.3rem;
+}
+.proposition p{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1rem,2.2vw,1.25rem);
+  font-style:italic;
+  line-height:1.45;
+}
+
+/* ── SECTION HEADING ── */
+.section-heading{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  margin:2.8rem 0 0.4rem;
+  padding-bottom:0.5rem;
+  border-bottom:1px solid var(--rule);
+}
+.stance-tag{
+  font-size:0.6rem;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  padding:0.2rem 0.6rem;
+  border-radius:2px;
+  flex-shrink:0;
+}
+.stance-tag.for{background:var(--for);color:#fff}
+.stance-tag.against{background:var(--against);color:#fff}
+.section-heading h2{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  font-weight:400;
+  line-height:1.3;
+}
+
+/* ── CAPTION ── */
+.caption{
+  font-size:0.8rem;
+  color:var(--muted);
+  font-style:italic;
+  margin-bottom:1.1rem;
+}
+
+/* ── CHART IMAGE ── */
+.chart-frame{
+  border:1px solid var(--rule);
+  border-radius:4px;
+  overflow:hidden;
+  margin-bottom:1.6rem;
+  background:var(--surface);
+}
+.chart-frame img{width:100%;height:auto;display:block}
+
+/* ── DESIGN DECISIONS ── */
+.decisions-label{
+  font-size:0.62rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.8rem;
+  font-weight:500;
+}
+.decisions-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+  margin-bottom:2rem;
+}
+.decisions-list li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:0.6rem 1rem;
+  padding:0.9rem 1rem;
+  background:var(--card-bg);
+  border:1px solid var(--rule);
+  border-radius:3px;
+}
+.score-badge{
+  font-family:'DM Serif Display',serif;
+  font-size:1.1rem;
+  font-weight:400;
+  line-height:1;
+  padding-top:0.15rem;
+  min-width:2.2rem;
+  text-align:center;
+}
+.score-badge.neg{color:var(--for)}
+.score-badge.pos{color:var(--against)}
+.decision-content{}
+.decision-title{
+  font-size:0.75rem;
+  font-weight:500;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  margin-bottom:0.25rem;
+}
+.decision-body{
+  font-size:0.8rem;
+  line-height:1.6;
+  color:#3d3028;
+}
+.score-key{
+  font-size:0.7rem;
+  color:var(--muted);
+  font-style:italic;
+  margin-bottom:0.6rem;
+}
+
+/* ── REFLECTION ── */
+.reflection-heading{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  font-weight:400;
+  margin:3rem 0 1rem;
+  padding-bottom:0.5rem;
+  border-bottom:2px solid var(--ink);
+}
+.reflection p{
+  font-size:0.88rem;
+  line-height:1.78;
+  margin-bottom:1.1rem;
+  color:#1e1a16;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;
+  padding:1.5rem 2rem;
+  font-size:0.65rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border-top:1px solid var(--rule);
+  max-width:760px;
+  margin:0 auto;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="course-label">DSC 106 &nbsp;·&nbsp; Project 2</p>
+  <h1>Persuasive <em>or</em> Deceptive<br>Visualization?</h1>
+  <p class="byline">
+    <span>Nainika Neerukonda</span> — nneerukonda@ucsd.edu &nbsp;&nbsp;
+    <span>Aaditya Aswadhati</span> — aaswadhati@ucsd.edu &nbsp;&nbsp;
+    <span>Ryan Atienza</span> — ratienza@ucsd.edu
+  </p>
+</header>
+
+<main>
+
+  <!-- PROPOSITION -->
+  <div class="proposition">
+    <p class="label">Proposition</p>
+    <p>Clinic deserts don't reduce abortion rates — they force women to cross state lines.</p>
+  </div>
+
+  <!-- ══ FOR ══ -->
+  <div class="section-heading">
+    <span class="stance-tag for">For</span>
+    <h2>the Proposition</h2>
+  </div>
+
+  <p class="caption">
+    States with the fewest clinics don't see fewer abortions overall — they see the highest rates of women crossing state lines to seek care elsewhere. Source: Guttmacher Institute, 2020.
+  </p>
+
+  <div class="chart-frame">
+    <img src="images/cross_state_lines.jpeg" alt="Bar chart showing the percentage of residents who traveled out of state for abortion care in 2020, by state. The top 15 states are shown, with the highest rates in the leftmost bars. The chart title is 'Clinic deserts don't reduce abortion rates — they force women to cross state lines.'">
+  </div>
+
+  <p class="decisions-label">Design Decisions and Rationale</p>
+  <p class="score-key">Score: −2 = fully deceptive &nbsp;·&nbsp; 0 = neutral &nbsp;·&nbsp; +2 = fully earnest</p>
+  <ul class="decisions-list">
+    <li>
+      <span class="score-badge neg">−1</span>
+      <div class="decision-content">
+        <p class="decision-title">Title phrased as a conclusion, not a description</p>
+        <p class="decision-body">The chart title states "Clinic deserts don't reduce abortion rates — they force women to cross state lines," which is our proposition rather than a neutral label. Readers primed by this framing are more likely to interpret the bars as evidence for that claim before examining the data critically. A neutral alternative ("Out-of-state abortion travel by state, 2020") would be more earnest. We chose the charged title because it anchors the reader's interpretation from the first moment — a subtle but effective rhetorical technique that stops short of outright fabrication.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge neg">−1</span>
+      <div class="decision-content">
+        <p class="decision-title">Color-coded urgency tiers ("Extreme," "High," "Moderate")</p>
+        <p class="decision-body">We assigned deep red to states where more than 50% of residents travel out of state, labeling this tier "Extreme." The warm red palette and loaded vocabulary carry emotional weight that nudges readers toward alarm. A more neutral design would use a single sequential hue. We chose this deliberately to maximize impact without the deception being immediately obvious — the tiers are real data breakpoints, but the color and language choices are editorially amplified.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge neg">−0.5</span>
+      <div class="decision-content">
+        <p class="decision-title">Selective subset: top 15 states only</p>
+        <p class="decision-body">Showing only the top 15 states by out-of-state travel excludes the many states with low travel rates, which would dilute the visual message. All 15 bars are high enough to look alarming at a glance. Showing all 50 states would be more complete and more earnest, but the pattern would feel less dramatic. This is a case of selective emphasis — technically accurate, but editorially weighted.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge pos">+1.5</span>
+      <div class="decision-content">
+        <p class="decision-title">Travel-centric metric captures the full picture</p>
+        <p class="decision-body">Choosing "% of residents who traveled out of state" as the primary metric is our most earnest decision. It directly tests whether clinic deserts reduce overall abortion demand or simply displace it. In-state rates alone would miss this. We considered several metrics (total abortions, providers per capita, rate per 1,000 women) and settled on the travel rate because it is the most complete answer to the proposition's claim — even if the other choices would also have been defensible.</p>
+      </div>
+    </li>
+  </ul>
+
+
+  <!-- ══ AGAINST ══ -->
+  <div class="section-heading">
+    <span class="stance-tag against">Against</span>
+    <h2>the Proposition</h2>
+  </div>
+
+  <p class="caption">
+    States where more women live in clinic deserts consistently report lower abortion rates. A clear downward trend suggests that restricting access does reduce the number of abortions that occur. Source: Guttmacher Institute, 2020.
+  </p>
+
+  <div class="chart-frame">
+    <img src="images/clinics_reduce_abortion_scatterplot_dark.jpeg">
+  </div>
+
+  <p class="decisions-label">Design Decisions and Rationale</p>
+  <p class="score-key">Score: −2 = fully deceptive &nbsp;·&nbsp; 0 = neutral &nbsp;·&nbsp; +2 = fully earnest</p>
+  <ul class="decisions-list">
+    <li>
+      <span class="score-badge neg">−2</span>
+      <div class="decision-content">
+        <p class="decision-title">Omission of out-of-state travel data</p>
+        <p class="decision-body">Both charts use only in-state abortion occurrence rates, completely excluding cross-state travel. This is our most deceptive choice: a lower in-state rate looks like fewer abortions overall, when in reality many abortions simply occur in neighboring states. We were fully aware of this omission — it is precisely the counter-argument the FOR side makes. We scored this −2 because it directly suppresses the most important alternative explanation for the pattern shown.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge neg">−1.5</span>
+      <div class="decision-content">
+        <p class="decision-title">Trendline and slope annotation imply causation</p>
+        <p class="decision-body">The OLS trendline is mathematically valid, but annotating it with "slope = −0.12 (each +10% desert = −1.2 fewer abortions per 1,000)" implies a causal mechanism. The precise-sounding language makes the relationship feel like a policy lever when it is only a correlation that may be driven by cultural, demographic, or political confounds. We deliberately used specific numerical language to lend false precision and authority to the claim.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge neg">−1</span>
+      <div class="decision-content">
+        <p class="decision-title">Dark dashboard aesthetic signals scientific rigor</p>
+        <p class="decision-body">Styling the charts with a dark background, white gridlines, and a monochromatic color scheme mimics the aesthetic of authoritative data journalism outlets (Bloomberg, FiveThirtyEight). This visual language primes readers to trust the analysis as objective and rigorous. The aesthetic credibility is borrowed, not earned — the underlying argument omits critical data. We considered a plain white chart style but found the dark theme made readers more likely to accept the conclusion without scrutiny.</p>
+      </div>
+    </li>
+    <li>
+      <span class="score-badge neg">−0.5</span>
+      <div class="decision-content">
+        <p class="decision-title">Grouping into tiers smooths over within-group variance</p>
+        <p class="decision-body">The bar chart collapses states into three access tiers and shows their averages (16.4, 11.2, 7.7), hiding the considerable spread within each group. Several high-desert states have abortion rates comparable to high-access states, which the scatter plot partially reveals but the bar chart conceals. Averaging suppresses contradictory cases, making the downward pattern look cleaner and more inevitable than it actually is.</p>
+      </div>
+    </li>
+  </ul>
+
+
+  <!-- ══ REFLECTION ══ -->
+  <h2 class="reflection-heading">Final Reflection</h2>
+  <div class="reflection">
+    <p>The most striking realization from this project was how naturally deception emerges from choices that feel entirely defensible in isolation. Selecting a meaningful metric, fitting a trendline, writing a title that "summarizes" the chart — each is a standard visualization practice. But when every choice is made in service of a predetermined conclusion, the cumulative effect misleads even when no individual step involves fabricating data. The AGAINST visualizations were the clearest illustration of this: using in-state rates only, fitting a regression, grouping into tiers, and applying a scientific dark aesthetic are all common techniques. None is individually dishonest, but together they construct a world in which cross-state travel simply does not exist — and that omission is the most consequential deception in the project.</p>
+    <p>We found the FOR visualizations easier to defend ethically because the travel metrics offer a more complete picture of what happens when clinic access is restricted. Even so, we made choices that were rhetorically loaded: labeling tiers "Extreme," writing the title as a declarative conclusion, and restricting the bar chart to the top 15 states that tell the most alarming story. The line between "choosing the right frame" and "manipulating the reader" proved narrower than we expected. What surprised us most was that the FOR side — which we believe is more factually complete — still required deliberate rhetorical choices to be persuasive. Earnest data presentation rarely speaks for itself.</p>
+    <p>We now understand ethical visualization less as a fixed rulebook and more as a practice of accountability. An acceptable persuasive choice, in our view, is one where the designer could transparently explain their decision — including what was omitted and why — without the visualization losing credibility. A misleading choice is one whose persuasive power depends on the reader not noticing it. By that standard, omitting out-of-state travel from abortion rate charts is unambiguously misleading, while using urgency-signaling colors is merely opinionated. The practical boundary lies in whether the core empirical picture is intact or has been quietly replaced.</p>
+  </div>
+
+</main>
+
+<footer>DSC 106 &nbsp;·&nbsp; Project 2 &nbsp;·&nbsp; Guttmacher Institute 2020 &nbsp;·&nbsp; UC San Diego</footer>
+
+</body>
+</html>
